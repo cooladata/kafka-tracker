@@ -5,17 +5,27 @@ spring:
 server:
   port: 9093
 
+#################################
+## tracker.config.topics - The name of the kafka topic
+## tracker.config.egwUrl - The call URL ex: http://api.cooladata.com:9090/egw/2/1d09cc5bff2245499bc4260385691582/single/json
+## tracker.config.kafkaConfig.kafkaBrokers - The list of kafka brokers. ex: "20.20.20.11:9092,20.20.20.12:9092,20.20.20.13:9092"
+## tracker.config.kafkaConfig.groupName - Kafka Consumer's group name
+## tracker.config.kafkaConfig.zookeeperConnectionString - ex: "10.10.10.1:12181,10.10.10.2:12181,10.10.10.3:12181"
+## tracker.config.kafkaConfig.consumerTimeoutMilliseconds - How long to wait until timeout
+## tracker.config.kafkaConfig.kafkaHostsConnectionString - ex: "20.20.20.11:9092,20.20.20.12:9092,20.20.20.13:9092"
+## tracker.config.kafkaConfig.streamsPerTopic - Number of threads which will read and send events from kafka
+
 
 tracker:
   config:
     topics: devAllTenants
-    egwUrl: http://localhost:9090/egw/2/1d09cc5bff2245499bc4260385691582/single/json
+    egwUrl: http://api.cooladata.com:9090/egw/2/{PROJECT_API_TOKEN}/single/json
     kafkaConfig:
-      kafkaBrokers: "localhost:9092"
-      groupName: "ETL-1-6"
-      zookeeperConnectionString: "localhost:2181"
+      kafkaBrokers: "20.20.20.11:9092,20.20.20.12:9092,20.20.20.13:9092"
+      groupName: "ConsumerGroup"
+      zookeeperConnectionString: "10.10.10.1:12181,10.10.10.2:12181,10.10.10.3:12181"
       consumerTimeoutMilliseconds: 10000
-      kafkaHostsConnectionString : "localhost:9092"
+      kafkaHostsConnectionString : "20.20.20.11:9092,20.20.20.12:9092,20.20.20.13:9092"
       streamsPerTopic: 2
 
 
